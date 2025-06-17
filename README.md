@@ -47,3 +47,9 @@ sudo ln -s /etc/letsencrypt/live/git.yourdomain.tld/fullchain.pem /etc/gitlab/ss
 sudo ln -s /etc/letsencrypt/live/git.yourdomain.tld/privkey.pem /etc/gitlab/ssl/git.yourdomain.tld.key
 sudo gitlab-ctl reconfigure
 ```
+
+## Configure GitLab
+
+- Login
+- Change the admin password
+- Disable sign-up 
