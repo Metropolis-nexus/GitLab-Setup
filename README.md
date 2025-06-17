@@ -34,6 +34,8 @@ nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1
 nginx['ssl_prefer_server_ciphers'] = "on"
 nginx['ssl_protocols'] = "TLSv1.2 TLSv1.3"
 nginx['ssl_session_tickets'] = "off"
+nginx['hsts_max_age'] = 31536000
+nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
 ```
 
