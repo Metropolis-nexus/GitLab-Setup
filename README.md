@@ -56,3 +56,29 @@ sudo gitlab-ctl reconfigure
 - Login
 - Change the admin password
 - Disable sign-up 
+
+### Settings
+- Settings -> General -> Visibility and access controls
+    - RSA SSH Keys -> Are Forbidden
+    - DSA SSH Keys -> Are Forbidden
+    - ECDSA SSH Keys -> Are Forbiden
+    - ED25519 SSH Keys -> Must be at least 256 bits
+    - ECDSA_SK SSH keys -> Are Forbidden
+    - ED25519_SK SSH Keys -> Must be at least 256 bits
+
+- Settings -> General -> Account and limit
+    - Uncheck "Require expiration date"
+    - Uncheck "Prompt users to upload SSH keys"
+
+- Settings -> General -> Sign-up Restrictions
+    - Email confirmation settings -> Hard
+
+- Settings -> General -> Sign-in restrictions
+    - Uncheck "Allow password authentication for Git over HTTP(S)"
+    - Check "Enforce two-factor authentication"
+    - Check "Require administrators to enable 2FA"
+
+- Settings -> General -> Customer experience improvement and third-party offers
+    - Uncheck "Do not display content for customer experience improvement and offers from third parties"
+
+- Reporting -> Abuse reports -> Add email
