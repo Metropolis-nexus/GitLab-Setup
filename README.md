@@ -82,3 +82,16 @@ sudo gitlab-ctl reconfigure
     - Uncheck "Do not display content for customer experience improvement and offers from third parties"
 
 - Reporting -> Abuse reports -> Add email
+
+## User Config
+- Account -> Two Factor Authentication -> Enable 2FA
+- Emails -> Add personal email
+- Profile
+    - Change primary email to personal email
+    - Public email -> Select personal email
+    - Add additional information
+- GPG Keys -> Add GPG key
+- Preferences
+    - Appearance -> Auto
+    - Navigation theme -> Blue
+    - Syntax highlighting theme -> Dark
