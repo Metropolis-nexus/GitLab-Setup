@@ -28,6 +28,23 @@ certbot certonly \
 - Adjust `/etc/gitlab/gitlab.rb`:
 
 ```
+gitlab_rails['gitlab_email_from'] = 'gitlab.system@metropolis.nexus'
+
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "mail.metropolis.nexus"
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = "gitlab.system@metropolis.nexus"
+gitlab_rails['smtp_password'] = "REDACTED"                                      
+gitlab_rails['smtp_domain'] = "mail.metropolis.nexus"
+gitlab_rails['smtp_authentication'] = "plain"
+gitlab_rails['smtp_enable_starttls_auto'] = false
+gitlab_rails['smtp_tls'] = true
+
+gitlab_rails['gitlab_email_from'] = 'gitlab.system@metropolis.nexus'
+gitlab_rails['gitlab_email_display_name'] = 'Metropolis GitLab'
+
+gitlab_rails['gitlab_default_color_mode'] = 3
+
 letsencrypt['enable'] = false
 nginx['redirect_http_to_https'] = true
 nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256"
