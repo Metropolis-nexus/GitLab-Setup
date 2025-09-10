@@ -45,6 +45,37 @@ gitlab_rails['gitlab_email_display_name'] = 'Metropolis GitLab'
 
 gitlab_rails['gitlab_default_color_mode'] = 3
 
+gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
+gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
+gitlab_rails['omniauth_sync_profile_from_provider'] = ['openid_connect']
+gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
+gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'openid_connect'
+gitlab_rails['omniauth_block_auto_created_users'] = false
+gitlab_rails['omniauth_auto_link_user'] = ['openid_connect']
+gitlab_rails['omniauth_allow_bypass_two_factor'] = ['']
+gitlab_rails['omniauth_providers'] = [
+  {
+    name: 'openid_connect',
+    label: 'openid_connect',
+    args: {
+      name: 'openid_connect',
+      scope: ['openid','profile','email'],
+      response_type: 'code',
+      issuer: 'https://auth.metropolis.nexus/application/o/gitlab/',
+      discovery: true,
+      client_auth_method: 'query',
+      uid_field: 'preferred_username',
+      send_scope_to_token_endpoint: 'true',
+      pkce: true,
+      client_options: {
+        identifier: 'REDACTED',                                
+        secret: 'REDACTED',                                                                                                                        
+        redirect_uri: 'https://git.metropolis.nexus/users/auth/openid_connect/callback'
+      }
+    }  
+  }    
+]
+
 letsencrypt['enable'] = false
 nginx['redirect_http_to_https'] = true
 nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256"
