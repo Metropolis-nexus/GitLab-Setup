@@ -90,6 +90,8 @@ nginx['hsts_max_age'] = 31536000
 nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
 
+gitlab_rails['packages_enabled'] = true
+
 spamcheck['enable'] = true
 ```
 
