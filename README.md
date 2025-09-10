@@ -89,6 +89,8 @@ nginx['ssl_session_timeout'] = "5m"
 nginx['hsts_max_age'] = 31536000
 nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
+
+spamcheck['enable'] = true
 ```
 
 - Setup symlink for Certbot's certificates:
