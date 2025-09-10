@@ -45,6 +45,8 @@ gitlab_rails['gitlab_email_display_name'] = 'Metropolis GitLab'
 
 gitlab_rails['gitlab_default_color_mode'] = 3
 
+gitlab_rails['allowed_hosts'] = ['git.metropolis.nexus']
+
 gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
 gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
 gitlab_rails['omniauth_sync_profile_from_provider'] = ['openid_connect']
