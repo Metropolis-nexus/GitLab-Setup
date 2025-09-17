@@ -89,6 +89,7 @@ nginx['ssl_session_timeout'] = "5m"
 nginx['hsts_max_age'] = 31536000
 nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
+nginx['custom_gitlab_server_config'] = "location /.well-known/acme-challenge/ {\n root /var/opt/gitlab/nginx/www; \n}\n"
 
 gitlab_rails['packages_enabled'] = true
 
