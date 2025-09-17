@@ -21,6 +21,12 @@ sudo certbot register
 nginx['custom_gitlab_server_config'] = "location /.well-known/acme-challenge/ {\n root /var/opt/gitlab/nginx/www; \n}\n"
 ```
 
+- Reconfigure Gitlab:
+
+```bash
+sudo gitlab-ctl reconfigure
+```
+
 - Issue a certificate:
 
 ```bash
