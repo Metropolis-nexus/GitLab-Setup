@@ -15,6 +15,14 @@ sudo certbot register
 
 - Pin the account in the CAA record
 
+- Adjust `/etc/gitlab/gitlab.rb`:
+
+```
+nginx['custom_gitlab_server_config'] = "location /.well-known/acme-challenge/ {\n root /var/opt/gitlab/nginx/www; \n}\n"
+```
+
+- Issue a certificate:
+
 ```bash
 certbot certonly \
     --webroot --webroot-path /var/opt/gitlab/nginx/www/ \
@@ -25,7 +33,7 @@ certbot certonly \
     -d git.yourdomain.tld
 ```
 
-- Adjust `/etc/gitlab/gitlab.rb`:
+- Further adjust `/etc/gitlab/gitlab.rb`:
 
 ```
 gitlab_rails['gitlab_email_from'] = 'gitlab.system@metropolis.nexus'
@@ -89,7 +97,6 @@ nginx['ssl_session_timeout'] = "5m"
 nginx['hsts_max_age'] = 31536000
 nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
-nginx['custom_gitlab_server_config'] = "location /.well-known/acme-challenge/ {\n root /var/opt/gitlab/nginx/www; \n}\n"
 
 gitlab_rails['packages_enabled'] = true
 
