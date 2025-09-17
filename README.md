@@ -58,7 +58,7 @@ gitlab_rails['omniauth_allow_bypass_two_factor'] = ['']
 gitlab_rails['omniauth_providers'] = [
   {
     name: 'openid_connect',
-    label: 'openid_connect',
+    label: 'Authentik',
     args: {
       name: 'openid_connect',
       scope: ['openid','profile','email'],
