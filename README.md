@@ -145,6 +145,7 @@ sudo gitlab-ctl reconfigure
     - ED25519_SK SSH Keys -> Must be at least 256 bits
 
 - Settings -> General -> Account and limit
+    - Uncheck "Gravatar enabled"
     - Uncheck "Require expiration date"
     - Uncheck "Prompt users to upload SSH keys"
 
@@ -157,7 +158,7 @@ sudo gitlab-ctl reconfigure
     - Check "Require administrators to enable 2FA"
 
 - Settings -> General -> Customer experience improvement and third-party offers
-    - Uncheck "Do not display content for customer experience improvement and offers from third parties"
+    - Check "Do not display content for customer experience improvement and offers from third parties"
 
 - Reporting -> Abuse reports -> Add email
 
