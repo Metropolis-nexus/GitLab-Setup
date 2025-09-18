@@ -78,6 +78,7 @@ gitlab_rails['gitlab_default_projects_features_container_registry'] = false
 gitlab_rails['content_security_policy'] = {
  'enabled' => true,
  'directives' => {
+   'base_uri' => 'none',
    'child_src' => 'self',
    'default_src' => 'none',
    'frame_src' => 'self'
