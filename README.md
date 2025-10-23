@@ -85,7 +85,8 @@ gitlab_rails['content_security_policy'] = {
  }
 }
 
-gitlab_rails['allowed_hosts'] = ['git.metropolis.nexus']
+# https://gitlab.com/gitlab-org/gitlab/-/issues/501194
+gitlab_rails['allowed_hosts'] = ['git.metropolis.nexus', '127.0.0.1', 'localhost']
 
 gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
 gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
