@@ -2,7 +2,7 @@
 
 ## Install GitLab
 
-Install GitLab Omnibus as per upstream documentation. Don't setup account pinning in the CAA record for now. Since RHEL 10 support isn't out yet, we can use the RHEL 9 repo [here](https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/config_file.repo?os=rhel&dist=10&source=script):
+Install GitLab Omnibus as per upstream documentation. Don't setup account pinning in the CAA record for now.
 
 ## Setup certbot
 
