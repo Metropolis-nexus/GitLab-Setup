@@ -36,6 +36,11 @@ certbot certonly \
     -d registry.yourdomain.tld
 ```
 
+- Create missing directory:
+```bash
+sudo mkdir -p /var/log/gitlab/spam-classifer
+```
+
 - Further adjust `/etc/gitlab/gitlab.rb`:
 
 ```
@@ -78,7 +83,8 @@ gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
 gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
 gitlab_rails['omniauth_sync_profile_from_provider'] = ['openid_connect']
 gitlab_rails['omniauth_sync_profile_attributes'] = ['email']
-gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'openid_connect'
+# Only enable this option after logging in as the root user and granting akadmin admin access.
+# gitlab_rails['omniauth_auto_sign_in_with_provider'] = 'openid_connect'
 gitlab_rails['omniauth_block_auto_created_users'] = false
 gitlab_rails['omniauth_auto_link_user'] = ['openid_connect']
 gitlab_rails['omniauth_allow_bypass_two_factor'] = ['']
@@ -121,8 +127,6 @@ nginx['hsts_include_subdomains'] = true
 nginx['gzip_enabled'] = false
 
 gitlab_rails['packages_enabled'] = true
-
-spamcheck['enable'] = true
 ```
 
 - Setup symlink for Certbot's certificates:
@@ -162,12 +166,13 @@ sudo gitlab-ctl reconfigure
     - Uncheck "Prompt users to upload SSH keys"
 
 - Settings -> General -> Sign-up Restrictions
+    - Uncheck "Require admin approval for new sign-ups"
     - Email confirmation settings -> Hard
 
 - Settings -> General -> Sign-in restrictions
     - Uncheck "Allow password authentication for Git over HTTP(S)"
     - Check "Enforce two-factor authentication"
-    - Check "Require administrators to enable 2FA"
+    - Check "Enforce two-factor authentication for administrators"
 
 - Settings -> General -> Customer experience improvement and third-party offers
     - Check "Do not display content for customer experience improvement and offers from third parties"
