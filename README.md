@@ -15,18 +15,6 @@ sudo certbot register
 
 - Pin the account in the CAA record
 
-- Adjust `/etc/gitlab/gitlab.rb`:
-
-```
-nginx['custom_gitlab_server_config'] = "location /.well-known/acme-challenge/ {\n root /var/opt/gitlab/nginx/www; \n}\n"
-```
-
-- Reconfigure Gitlab:
-
-```bash
-sudo gitlab-ctl reconfigure
-```
-
 - Issue a certificate:
 
 ```bash
@@ -36,7 +24,7 @@ certbot certonly \
     --key-type ecdsa \
     --reuse-key \
     --deploy-hook "sudo gitlab-ctl restart nginx" \
-    -d git.yourdomain.tld
+    -d gitlab.yourdomain.tld
 
 
 certbot certonly \
@@ -51,8 +39,6 @@ certbot certonly \
 - Further adjust `/etc/gitlab/gitlab.rb`:
 
 ```
-gitlab_rails['gitlab_email_from'] = 'gitlab.system@metropolis.nexus'
-
 gitlab_rails['smtp_enable'] = true
 gitlab_rails['smtp_address'] = "mail.metropolis.nexus"
 gitlab_rails['smtp_port'] = 465
@@ -86,7 +72,7 @@ gitlab_rails['content_security_policy'] = {
 }
 
 # https://gitlab.com/gitlab-org/gitlab/-/issues/501194
-gitlab_rails['allowed_hosts'] = ['git.metropolis.nexus', '127.0.0.1', 'localhost']
+gitlab_rails['allowed_hosts'] = ['gitlab.metropolis.nexus', '127.0.0.1', 'localhost']
 
 gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
 gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
@@ -113,7 +99,7 @@ gitlab_rails['omniauth_providers'] = [
       client_options: {
         identifier: 'REDACTED',                                
         secret: 'REDACTED',                                                                                                                        
-        redirect_uri: 'https://git.metropolis.nexus/users/auth/openid_connect/callback'
+        redirect_uri: 'https://gitlab.metropolis.nexus/users/auth/openid_connect/callback'
       }
     }  
   }    
@@ -122,6 +108,7 @@ gitlab_rails['omniauth_providers'] = [
 registry_external_url 'https://registry.metropolis.nexus'
 
 letsencrypt['enable'] = false
+nginx['enable'] = true
 nginx['redirect_http_to_https'] = true
 nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256"
 nginx['ssl_prefer_server_ciphers'] = "on"
@@ -145,8 +132,8 @@ sudo mkdir -p /etc/gitlab/ssl/backup
 sudo chmod 755 /etc/gitlab/ssl/backup
 sudo mv /etc/gitlab/ssl/git* /etc/gitlab/ssl/backup
 
-sudo ln -s /etc/letsencrypt/live/git.yourdomain.tld/fullchain.pem /etc/gitlab/ssl/git.yourdomain.tld.crt
-sudo ln -s /etc/letsencrypt/live/git.yourdomain.tld/privkey.pem /etc/gitlab/ssl/git.yourdomain.tld.key
+sudo ln -s /etc/letsencrypt/live/gitlab.yourdomain.tld/fullchain.pem /etc/gitlab/ssl/gitlab.yourdomain.tld.crt
+sudo ln -s /etc/letsencrypt/live/gitlab.yourdomain.tld/privkey.pem /etc/gitlab/ssl/gitlab.yourdomain.tld.key
 
 sudo ln -s /etc/letsencrypt/live/registry.yourdomain.tld/fullchain.pem /etc/gitlab/ssl/registry.yourdomain.tld.crt
 sudo ln -s /etc/letsencrypt/live/registry.yourdomain.tld/privkey.pem /etc/gitlab/ssl/registry.yourdomain.tld.key
