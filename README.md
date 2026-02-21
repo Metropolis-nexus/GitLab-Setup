@@ -168,11 +168,13 @@ sudo gitlab-ctl reconfigure
 - Settings -> General -> Sign-up Restrictions
     - Uncheck "Require admin approval for new sign-ups"
     - Email confirmation settings -> Hard
+    - Minimum password lenght -> 12 (This does not do anything, but we are trying to be consistent with Authentik here)
 
 - Settings -> General -> Sign-in restrictions
     - Uncheck "Allow password authentication for Git over HTTP(S)"
     - Check "Enforce two-factor authentication"
     - Check "Enforce two-factor authentication for administrators"
+    - Check "Enable Admin Mode"
 
 - Settings -> General -> Customer experience improvement and third-party offers
     - Check "Do not display content for customer experience improvement and offers from third parties"
