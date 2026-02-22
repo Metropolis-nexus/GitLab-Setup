@@ -79,6 +79,15 @@ gitlab_rails['content_security_policy'] = {
 # https://gitlab.com/gitlab-org/gitlab/-/issues/501194
 gitlab_rails['allowed_hosts'] = ['gitlab.metropolis.nexus', '127.0.0.1', 'localhost']
 
+gitlab_rails['incoming_email_enabled'] = true
+gitlab_rails['incoming_email_address'] = "gitlab.system+%{key}@metropolis.nexus"
+gitlab_rails['incoming_email_email'] = "gitlab.system@metropolis.nexus"
+gitlab_rails['incoming_email_password'] = "REDACTED"
+gitlab_rails['incoming_email_host'] = "mail.metropolis.nexus"
+gitlab_rails['incoming_email_port'] = 993
+gitlab_rails['incoming_email_ssl'] = true
+gitlab_rails['incoming_email_start_tls'] = false
+
 gitlab_rails['omniauth_allow_single_sign_on'] = ['openid_connect']
 gitlab_rails['omniauth_sync_email_from_provider'] = 'openid_connect'
 gitlab_rails['omniauth_sync_profile_from_provider'] = ['openid_connect']
