@@ -57,6 +57,7 @@ gitlab_rails['smtp_tls'] = true
 gitlab_rails['gitlab_email_from'] = 'gitlab.system@metropolis.nexus'
 gitlab_rails['gitlab_email_display_name'] = 'Metropolis GitLab'
 
+gitlab_rails['gitlab_default_theme'] = 4
 gitlab_rails['gitlab_default_color_mode'] = 3
 
 gitlab_rails['gitlab_default_projects_features_issues'] = true
