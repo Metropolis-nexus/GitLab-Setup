@@ -189,6 +189,9 @@ sudo gitlab-ctl reconfigure
 - Settings -> General -> Customer experience improvement and third-party offers
     - Check "Do not display content for customer experience improvement and offers from third parties"
 
+- Settings -> General -> VS Code Extension Marketplace
+    - Toggle "Enable Extension Marketplace" on
+
 - Reporting -> Abuse reports -> Add email
 
 ## User Config
