@@ -192,6 +192,9 @@ sudo gitlab-ctl reconfigure
 - Settings -> General -> VS Code Extension Marketplace
     - Toggle "Enable Extension Marketplace" on
 
+- Settings -> Repository -> Default branch
+    - Set to "master"
+
 - Reporting -> Abuse reports -> Add email
 
 ## User Config
