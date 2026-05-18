@@ -36,6 +36,23 @@ certbot certonly \
     -d registry.yourdomain.tld
 ```
 
+- Create ```/var/opt/gitlab/nginx/conf/service_conf/certbot.conf```:
+
+```
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    location /.well-known/acme-challenge/ {
+        root /var/opt/gitlab/nginx/www;
+    }
+
+    location / {
+        return 308 https://$host$request_uri;
+    }
+}
+```
+
 - Create missing directory:
 ```bash
 sudo mkdir -p /var/log/gitlab/spam-classifer
@@ -125,7 +142,6 @@ registry_external_url 'https://registry.metropolis.nexus'
 
 letsencrypt['enable'] = false
 nginx['enable'] = true
-nginx['redirect_http_to_https'] = true
 nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256"
 nginx['ssl_prefer_server_ciphers'] = "on"
 nginx['ssl_protocols'] = "TLSv1.2 TLSv1.3"
@@ -138,6 +154,8 @@ nginx['gzip_enabled'] = false
 
 gitlab_rails['packages_enabled'] = true
 ```
+
+**Do not set `nginx['redirect_http_to_https'] = true` or `registry_nginx['redirect_http_to_https'] = true`**
 
 - Setup symlink for Certbot's certificates:
 
