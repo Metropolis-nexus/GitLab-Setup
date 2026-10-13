@@ -140,6 +140,14 @@ gitlab_rails['omniauth_providers'] = [
 
 registry_external_url 'https://registry.metropolis.nexus'
 
+postgresql['shared_buffers'] = "6GB"
+
+postgresql['work_mem'] = "1GB"
+postgresql['maintenance_work_mem'] = "1GB"
+postgresql['effective_io_concurrency'] = 100
+postgresql['max_worker_processes'] = 12
+postgresql['max_parallel_workers_per_gather'] = 3
+
 letsencrypt['enable'] = false
 nginx['enable'] = true
 nginx['ssl_ciphers'] = "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256"
